@@ -1,0 +1,109 @@
+{
+  "kind": "build_request",
+  "title": "Integrate destination-specific booking with schedules and seat availability",
+  "projectName": "DreamDestination",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-14",
+      "text": "Add backend support for destination-linked transport options (flights and trains) that include schedule details and seat availability, so the frontend can display when a flight/train departs and how many seats are still available for a given destination.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "add boking with destination bcz when user see desnation that they book flight or train so they know that when flight is and how many seat are empty n all detailes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend exposes a query API that returns a list of bookable flight/train options for a given destination id.",
+        "Each returned option includes: transport type (flight/train), origin, destination, departure date/time (and any additional schedule details the UI needs), total seats, and available seats.",
+        "If transport options are empty/uninitialized, the backend provides a deterministic default set for existing seeded destinations so the UI always has something to show."
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "text": "Update backend booking creation to support booking a specific flight/train option for a destination and to enforce seat availability (reduce available seats when a booking is made and reject bookings that exceed remaining seats).",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "add boking with destination bcz when user see desnation that they book flight or train so they know that when flight is and how many seat are empty n all detailes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A signed-in user can create a booking tied to a specific transport option returned by the backend.",
+        "When a booking is created, available seats for that option decrease by the number of passengers booked.",
+        "If requested passengers exceed available seats, the backend rejects the booking with an error.",
+        "Existing user booking history (getBookingsByCaller) continues to work and includes enough stored detail to display the destination and schedule information associated with the booking."
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "text": "Integrate booking into the Destination Details page by adding a “Book flight/train” section that lists available transport options for that destination, including schedule details and current available seats, and allows the user to start booking from the destination page.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "add boking with destination bcz when user see desnation that they book flight or train so they know that when flight is and how many seat are empty n all detailes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Destination details page shows a list of available flight/train options for the currently viewed destination.",
+        "Each option row/card displays at minimum: transport type, departure date/time, route (from/to), and available seats (e.g., “12 seats available”).",
+        "If the user is not signed in, the booking call-to-action prompts the user to sign in (route to /login) before booking.",
+        "If the user is signed in, selecting an option enables a booking action that proceeds into the booking flow (either by navigating to /booking with the selected option prefilled, or by booking inline)."
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "text": "Update the Booking page and React Query hooks to support destination-linked bookings: allow pre-filling the booking UI from a selected destination transport option, display full option details (including seat availability), and successfully create the booking via the updated backend API.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "add boking with destination bcz when user see desnation that they book flight or train so they know that when flight is and how many seat are empty n all detailes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Frontend has React Query hook(s) to fetch destination transport options and to create a booking for a selected option.",
+        "Booking page can accept navigation context (e.g., destination/option selection) and show the chosen option’s details, including available seats, before confirming booking.",
+        "On successful booking creation, booking history refreshes and the new booking appears in “My Bookings.”",
+        "User-facing validation and error messages are in English (e.g., not enough seats, missing required fields)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Backend must remain a single Motoko actor (all logic in backend/main.mo); only add/adjust migration logic if state shape changes require it under the project’s conditional migration policy.",
+    "Do not edit files under frontend/src/components/ui or any paths listed as immutable in SYSTEM_CONTEXT.",
+    "Do not route generated/static images through the backend; keep any assets under frontend/public/assets/generated if needed."
+  ],
+  "nonGoals": [
+    "Implementing real airline/train provider integrations or live inventory feeds.",
+    "Payments, ticket issuance, or refunds.",
+    "Real-time seat updates via websockets/push notifications."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [
+      "Show booking options (flight/train) directly on destination details with schedule and available seats."
+    ],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "frontend/src/App.tsx": "Main application component that sets up TanStack Router with routes for Home, Destinations, Destination details, Contact, About, Login, and the new Booking page, all wrapped in a shared SiteLayout component.",
+  "frontend/src/components/layout/SiteLayout.tsx": "Responsive site layout component with sticky header navigation (desktop and mobile menu) including Home, Destinations, Booking, About, Contact, and Login links, plus footer with quick links and branding.",
+  "frontend/src/pages/HomePage.tsx": "Home page featuring a hero section with the generated hero image, value propositions in feature cards, and call-to-action sections encouraging users to explore destinations.",
+  "frontend/src/pages/DestinationsPage.tsx": "Destinations listing page that fetches and displays all destinations from the backend in a responsive grid with cards showing thumbnails, descriptions, and type-safe navigation links to detail pages using TanStack Router's params prop.",
+  "frontend/src/pages/DestinationDetailsPage.tsx": "Destination detail page that displays comprehensive destination information and a list of available transport options (flights/trains) with schedule, seat availability, and booking CTAs that route authenticated users to the booking page with prefilled context.",
+  "frontend/src/pages/ContactPage.tsx": "Contact page with a validated form (name, email, message) that submits inquiries to the backend, displays success/error states, and shows contact information cards.",
+  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for all backend operations including destinations, contact inquiries, transport options (by destination and by ID), and booking mutations with seat-aware validation and user-friendly error mapping.",
+  "frontend/src/index.css": "Global styles with OKLCH color system defining a warm sunrise/travel-inspired palette (oranges, warm neutrals) for both light and dark modes, avoiding blue/purple dominance.",
+  "frontend/tailwind.config.js": "Tailwind configuration extending the theme with custom font family (Inter), warm color tokens, custom border radius, and soft shadow utilities for the travel brand aesthetic.",
+  "frontend/src/pages/AboutPage.tsx": "About page featuring DreamDestination's mission, vision, and value propositions displayed in a grid of feature cards with icons and descriptive content.",
+  "frontend/src/pages/LoginPage.tsx": "Login page that uses the Internet Identity hook to provide secure sign-in and sign-out functionality with loading states, error handling, and principal ID display.",
+  "frontend/src/pages/BookingPage.tsx": "Booking page with authentication gating that supports prefilled booking from selected transport options, displays selected option details with seat availability, validates passenger count against available seats, and shows booking history with schedule information."
+}

@@ -1,0 +1,46 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Destination-linked booking: transport options, prefill, and seat-aware booking UI",
+  "requirements": [
+    {
+      "id": "REQ-16",
+      "summary": "Show destination-specific flight/train options on Destination Details and allow starting booking from a selected option with login gating",
+      "acceptanceCriteria": [
+        "Destination details page shows a list of available flight/train options for the currently viewed destination.",
+        "Each option row/card displays at minimum: transport type, departure date/time, route (from/to), and available seats (e.g., “12 seats available”).",
+        "If the user is not signed in, the booking call-to-action prompts the user to sign in (route to /login) before booking.",
+        "If the user is signed in, selecting an option enables a booking action that proceeds into the booking flow (either by navigating to /booking with the selected option prefilled, or by booking inline)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/DestinationDetailsPage.tsx",
+          "operation": "modify",
+          "description": "Integrate a “Book flight/train” section: use a new React Query hook to load transport options for the current destination and render them as a list of selectable rows/cards. Display transport type, schedule (departure date/time text), a derived route label (origin/destination where available; otherwise destination + schedule), and available seats. Use the authorization component’s authentication state (via existing Internet Identity hook) to gate booking: unauthenticated users see a CTA that routes to /login; authenticated users can click a CTA that navigates to /booking with the selected destinationId + transportOptionId passed as router search params for prefill. Use shadcn-ui Card/Button/Alert/Skeleton for UI consistency. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-17",
+      "summary": "Update booking hooks and Booking page to support destination-linked transport option prefill, seat display, and booking creation via updated backend API",
+      "acceptanceCriteria": [
+        "Frontend has React Query hook(s) to fetch destination transport options and to create a booking for a selected option.",
+        "Booking page can accept navigation context (e.g., destination/option selection) and show the chosen option’s details, including available seats, before confirming booking.",
+        "On successful booking creation, booking history refreshes and the new booking appears in “My Bookings.”",
+        "User-facing validation and error messages are in English (e.g., not enough seats, missing required fields)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add React Query hooks for destination-linked transport: (1) fetch transport options by destination id, (2) fetch a single transport option by id, and (3) update the booking creation mutation to call the updated backend booking creation capability that requires a transportOptionId. Ensure mutations invalidate relevant caches (myBookings and any transport-option queries for the affected destination/option) so seat availability and history refresh after booking. Keep user-facing errors in English by mapping common backend failures (e.g., insufficient seats) to readable messages when feasible. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/BookingPage.tsx",
+          "operation": "modify",
+          "description": "Support prefilled booking from a selected destination transport option: read router search params (e.g., transportOptionId and destinationId) and, when present, load and display the chosen option’s details (type, schedule, and available seats) above the form. Pre-fill form fields where appropriate using the selected option (e.g., bookingType from transportType; details content referencing schedule). Add seat-aware validation: passengers must be >= 1 and must not exceed the displayed availableSeats when an option is selected; show clear English validation errors. When submitting a destination-linked booking, call the updated create booking mutation including transportOptionId and include passengers + any other needed info in the details string. Keep existing auth gating behavior (route to /login when not signed in) consistent with the authorization component patterns. Use existing shadcn-ui components (Tabs/Card/Input/Alert/Button) already used in this page and ensure booking history refreshes after success. Verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

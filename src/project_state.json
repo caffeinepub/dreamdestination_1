@@ -1,0 +1,191 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 9,
+  "summary": "Build DreamDestination, a full-stack travel website with a React (HTML/CSS/JS) frontend and a Node.js/Express + MongoDB backend, expanding to include an owner-only admin panel and flight/train booking features.",
+  "architectural_notes": [
+    "Tech stack: React frontend (HTML/CSS/JS) + Node.js/Express backend + MongoDB database.",
+    "Add role-based access control: restrict admin panel actions to the site owner/admin account."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-dreamdestination-travel-website-frontend-in-react-typescript-with-tailwind-styling-including-a-responsive-layout-with-top-navigation-and-footer-and-the-following-pages-routes-home-destinations-list-destination-details-and-contact",
+      "title": "Create a DreamDestination travel website frontend in React + TypeScript with Tailwind styling, including a responsive layout with top navigation and footer, and the following pages/routes: Home, Destinations (list), Destination Details, and Contact.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-coherent-visual-theme-for-dreamdestination-colors-typography-spacing-components-style-and-apply-it-consistently-across-all-pages",
+      "title": "Implement a coherent visual theme for DreamDestination (colors, typography, spacing, components style) and apply it consistently across all pages.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-frontend-data-fetching-with-react-query-to-load-destinations-from-the-backend-display-them-in-the-destinations-list-and-show-full-details-on-the-destination-details-page",
+      "title": "Add frontend data fetching with React Query to load destinations from the backend, display them in the Destinations list, and show full details on the Destination Details page.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-contact-form-on-the-frontend-name-email-message-that-submits-to-the-backend-and-a-backend-api-to-store-contact-inquiries-for-later-review",
+      "title": "Implement a Contact form on the frontend (name, email, message) that submits to the backend, and a backend API to store contact inquiries for later review.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-generate-and-integrate-required-static-images-for-the-dreamdestination-brand-and-ui-logo-and-hero-imagery-and-reference-them-as-static-assets-in-the-frontend",
+      "title": "Generate and integrate required static images for the DreamDestination brand and UI (logo and hero imagery) and reference them as static assets in the frontend.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-about-page-to-the-dreamdestination-frontend-including-a-new-route-at-about-and-a-new-page-component",
+      "title": "Add an About page to the DreamDestination frontend, including a new route at \"/about\" and a new page component.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-login-page-to-the-dreamdestination-frontend-including-a-new-route-at-login-and-a-new-page-component-that-uses-the-existing-internet-identity-hook-to-let-users-sign-in-and-sign-out",
+      "title": "Add a Login page to the DreamDestination frontend, including a new route at \"/login\" and a new page component that uses the existing Internet Identity hook to let users sign in and sign out.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-shared-site-navigation-desktop-header-nav-mobile-menu-and-footer-quick-links-to-include-links-to-the-new-about-and-login-pages-alongside-the-existing-home-destinations-and-contact-links",
+      "title": "Update the shared site navigation (desktop header nav, mobile menu, and footer quick links) to include links to the new \"/about\" and \"/login\" pages, alongside the existing Home, Destinations, and Contact links.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-new-frontend-page-and-route-for-booking-at-booking-that-lets-a-signed-in-user-create-a-flight-or-train-booking-by-entering-from-to-date-time-and-passengers",
+      "title": "Create a new frontend page and route for booking at \"/booking\" that lets a signed-in user create a flight or train booking by entering From, To, Date, Time, and Passengers.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-react-query-hooks-and-ui-integration-to-submit-bookings-to-the-backend-and-show-the-signed-in-user-s-booking-history-on-the-booking-page",
+      "title": "Add React Query hooks and UI integration to submit bookings to the backend and show the signed-in user's booking history on the Booking page.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-shared-site-navigation-header-mobile-menu-and-footer-quick-links-to-include-a-link-to-the-new-booking-page-at-booking",
+      "title": "Update the shared site navigation (header, mobile menu, and footer quick links) to include a link to the new Booking page at \"/booking\".",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-integrate-booking-into-the-destination-details-page-by-adding-a-book-flight-train-section-that-lists-available-transport-options-for-that-destination-including-schedule-details-and-current-available-seats-and-allows-the-user-to-start-booking-from-the-destination-page",
+      "title": "Integrate booking into the Destination Details page by adding a “Book flight/train” section that lists available transport options for that destination, including schedule details and current available seats, and allows the user to start booking from the destination page.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-booking-page-and-react-query-hooks-to-support-destination-linked-bookings-allow-pre-filling-the-booking-ui-from-a-selected-destination-transport-option-display-full-option-details-including-seat-availability-and-successfully-create-the-booking-via-the-updated-backend-api",
+      "title": "Update the Booking page and React Query hooks to support destination-linked bookings: allow pre-filling the booking UI from a selected destination transport option, display full option details (including seat availability), and successfully create the booking via the updated backend API.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create DreamDestination travel website: React (HTML/CSS/JS) frontend plus Node.js/Express backend with MongoDB.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Implement backend canister APIs (Motoko, single actor) to support managing destinations: list destinations, get destination by id, and (for initial content) seed a small default set of destinations when empty.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Add an About page/route to the DreamDestination frontend navigation.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Add a Login page/route (basic authentication UI flow) to the DreamDestination frontend.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Add an owner-only admin panel to manage site data (add/edit/delete destinations, tours, and review inquiries).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Implement booking features for flights and trains (search by from/to/date/time/passengers, results list, details, booking flow, store bookings, and show user booking history).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Add backend support for saving and retrieving user bookings (flights and trains) in the existing Motoko single-actor canister, associating each booking with the authenticated caller principal.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Integrate booking with destination details: allow users to book flights/trains directly from a destination page and show full schedule details including seat availability (empty seats).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Add backend support for destination-linked transport options (flights and trains) that include schedule details and seat availability, so the frontend can display when a flight/train departs and how many seats are still available for a given destination.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Update backend booking creation to support booking a specific flight/train option for a destination and to enforce seat availability (reduce available seats when a booking is made and reject bookings that exceed remaining seats).",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "DreamDestination",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

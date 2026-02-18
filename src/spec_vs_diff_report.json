@@ -1,0 +1,56 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-17T17:25:57.744Z",
+  "summary": "Diff adds a TransportOption concept and frontend UI/hooks to fetch options and create bookings tied to a selected option, plus a migration to add transportOptionId to bookings and new transportOptions state. However, key REQ-14/REQ-15 acceptance criteria (full option fields, deterministic default options seeding, and backend seat enforcement/decrement behavior) are not evidenced in the provided diff summary.",
+  "missing_requirements": [
+    {
+      "id": "REQ-14",
+      "requirement": "Transport option API returns, for a destination id, options including transport type, origin, destination, departure date/time (schedule details), total seats, and available seats.",
+      "reason": "The TransportOption type shown only includes id, destinationId, transportType, schedule (as Text), and availableSeats. There is no evidence of origin, destination, departure date/time as a structured field, or totalSeats being stored/returned.",
+      "evidence": [
+        "backend/main.mo",
+        "backend/migration.mo"
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "requirement": "If transport options are empty/uninitialized, backend provides a deterministic default set for existing seeded destinations.",
+      "reason": "transportOptions is initialized to an empty Map in both migration and main; no seeding/defaulting logic for transport options is shown in the truncated backend diff.",
+      "evidence": [
+        "backend/migration.mo",
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "requirement": "Backend booking creation enforces seat availability by rejecting bookings that exceed remaining seats and reducing availableSeats when a booking is made.",
+      "reason": "Frontend performs client-side seat validation and maps backend errors, but the diff summary does not show any backend logic that decrements availableSeats or rejects over-capacity bookings.",
+      "evidence": [
+        "frontend/src/pages/BookingPage.tsx",
+        "frontend/src/hooks/useQueries.ts",
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "requirement": "Booking history continues to work and includes enough stored detail to display the destination and schedule information associated with the booking.",
+      "reason": "The backend Booking type adds only transportOptionId (optional) in addition to the existing 'details' Text; the diff summary does not show getBookingsByCaller changes or any guaranteed persisted schedule/route fields beyond an optional reference id and freeform details.",
+      "evidence": [
+        "backend/main.mo",
+        "backend/migration.mo"
+      ]
+    }
+  ],
+  "hallucinated_features": [],
+  "confidence": 0.72,
+  "changed_files": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "frontend-file-summaries.txt",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/BookingPage.tsx",
+    "frontend/src/pages/DestinationDetailsPage.tsx",
+    "project_state.json"
+  ]
+}

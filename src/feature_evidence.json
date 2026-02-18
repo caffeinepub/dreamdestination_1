@@ -1,0 +1,44 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-integrate-booking-into-the-destination-details-page-by-adding-a-book-flight-train-section-that-lists-available-transport-options-for-that-destination-including-schedule-details-and-current-available-seats-and-allows-the-user-to-start-booking-from-the-destination-page",
+      "featureTitle": "Integrate booking into the Destination Details page by adding a “Book flight/train” section that lists available transport options for that destination, including schedule details and current available seats, and allows the user to start booking from the destination page.",
+      "files": [
+        "frontend/src/pages/DestinationDetailsPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-16"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-booking-page-and-react-query-hooks-to-support-destination-linked-bookings-allow-pre-filling-the-booking-ui-from-a-selected-destination-transport-option-display-full-option-details-including-seat-availability-and-successfully-create-the-booking-via-the-updated-backend-api",
+      "featureTitle": "Update the Booking page and React Query hooks to support destination-linked bookings: allow pre-filling the booking UI from a selected destination transport option, display full option details (including seat availability), and successfully create the booking via the updated backend API.",
+      "files": [
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/BookingPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-17"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

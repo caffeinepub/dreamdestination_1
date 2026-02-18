@@ -1,0 +1,72 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-17T17:25:57.746Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-14",
+        "summary": "Add backend support for destination-linked transport options (flights and trains) that include schedule details and seat availability, so the frontend can display when a flight/train departs and how many seats are still available for a given destination.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-15",
+        "summary": "Update backend booking creation to support booking a specific flight/train option for a destination and to enforce seat availability (reduce available seats when a booking is made and reject bookings that exceed remaining seats).",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-16",
+        "summary": "Integrate booking into the Destination Details page by adding a “Book flight/train” section that lists available transport options for that destination, including schedule details and current available seats, and allows the user to start booking from the destination page.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/DestinationDetailsPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/DestinationDetailsPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-17",
+        "summary": "Update the Booking page and React Query hooks to support destination-linked bookings: allow pre-filling the booking UI from a selected destination transport option, display full option details (including seat availability), and successfully create the booking via the updated backend API.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/BookingPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/pages/BookingPage.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/BookingPage.tsx",
+    "frontend/src/pages/DestinationDetailsPage.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}
